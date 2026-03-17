@@ -5,7 +5,7 @@ The [extension-template](https://github.com/duckdb/extension-template) is great,
 - build some simple 1-off extension in C++ that does some specific thing (import weird data)
 - build and & load it with `-unsigned`
 - wrap the whole thing in a docker container, so I can have a ready-made duckdb CLI that can use it
-- publish that docker on Github registry so I can use ti without having to build anything
+- publish that docker on Github registry so I can use it without having to build anything
 
 I don't want long build-time, and a lot of build-deps, and tracking a bunch of files I didn't make in my repo, so I reuse [releases](https://github.com/duckdb/duckdb/releases) as much as possible.
 
