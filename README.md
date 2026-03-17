@@ -25,7 +25,8 @@ duckdb -unsigned
 docker build -t duckdb-quack .
 
 # run the docker container
-docker run -v ./data:/data -it --rm duckdb-quack mydb.duckdb
+docker run -v ./data:/data -it --rm duckdb-quack
+# SELECT quack('world');
 ```
 
 ## customization
