@@ -49,7 +49,14 @@ message(STATUS "DuckDB platform: ${DUCKDB_PLATFORM}")
 message(STATUS "Extension name:  ${EXTENSION_NAME}")
 
 # -- Download DuckDB headers (amalgamated source) ----------------------------
-set(DUCKDB_DOWNLOAD_DIR "${CMAKE_BINARY_DIR}/_duckdb")
+# DUCKDB_DEPS_DIR can be set to a pre-populated directory to skip downloads
+# (useful for Docker layer caching). Falls back to build/_duckdb.
+set(DUCKDB_DEPS_DIR "" CACHE PATH "Pre-populated DuckDB deps directory (optional)")
+if(DUCKDB_DEPS_DIR AND EXISTS "${DUCKDB_DEPS_DIR}")
+    set(DUCKDB_DOWNLOAD_DIR "${DUCKDB_DEPS_DIR}")
+else()
+    set(DUCKDB_DOWNLOAD_DIR "${CMAKE_BINARY_DIR}/_duckdb")
+endif()
 set(DUCKDB_SRC_ZIP "${DUCKDB_DOWNLOAD_DIR}/libduckdb-src.zip")
 set(DUCKDB_SRC_DIR "${DUCKDB_DOWNLOAD_DIR}/src")
 
